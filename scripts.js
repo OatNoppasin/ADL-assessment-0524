@@ -74,7 +74,7 @@ document.getElementById('additionalForm').addEventListener('submit', (event) => 
 });
 
 function sendToGoogleSheets(data) {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}:append?valueInputOption=USER_ENTERED&key=${API_KEY}`;
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/181SVrsv-f4aYSMg8r2VmAroKAFsdCiTKVTM20mx4Em4/values/ADL assessment 2024:append?valueInputOption=USER_ENTERED&key=AIzaSyDoneBpMR12Qlji9KcAw8BZpjjp6juuv2s`;
     const body = {
         values: [
             Object.values(data)
