@@ -74,19 +74,12 @@ document.getElementById('additionalForm').addEventListener('submit', (event) => 
 });
 
 function sendToGoogleSheets(data) {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/181SVrsv-f4aYSMg8r2VmAroKAFsdCiTKVTM20mx4Em4/values/ADL_assessment_2024:append?valueInputOption=USER_ENTERED&key=AIzaSyDoneBpMR12Qlji9KcAw8BZpjjp6juuv2s`;
-    const body = {
-        values: [
-            Object.values(data)
-        ]
-    };
-
-    fetch(url, {
+    fetch(API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(data)
     })
     .then(response => response.json())
     .then(data => {
