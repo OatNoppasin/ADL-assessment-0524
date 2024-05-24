@@ -60,19 +60,39 @@ document.getElementById('additionalForm').addEventListener('submit', (event) => 
     const assessmentForm = new FormData(document.getElementById('assessmentForm'));
     const additionalForm = new FormData(document.getElementById('additionalForm'));
 
-    const allData = new FormData();
-    for (const [key, value] of personalInfoForm.entries()) allData.append(key, value);
-    for (const [key, value] of assessmentForm.entries()) allData.append(key, value);
-    for (const [key, value] of additionalForm.entries()) allData.append(key, value);
+    const allData = {};
+    for (const [key, value] of personalInfoForm.entries()) allData[key] = value;
+    for (const [key, value] of assessmentForm.entries()) allData[key] = value;
+    for (const [key, value] of additionalForm.entries()) allData[key] = value;
 
-    // Add your Google Sheets integration here using Google Sheets API
-    // For demonstration, we'll just log the data
-    for (const [key, value] of allData.entries()) {
-        console.log(key, value);
-    }
+    sendToGoogleSheets(allData);
 
     alert('ขอบคุณสำหรับการทำแบบสอบถาม');
     setTimeout(() => {
         window.close();
     }, 1000);
 });
+
+function sendToGoogleSheets(data) {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}:append?valueInputOption=USER_ENTERED&key=${API_KEY}`;
+    const body = {
+        values: [
+            Object.values(data)
+        ]
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
