@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barthel ADL Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>แบบประเมินคัดกรอง Barthel ADL</h1>
+    </header>
+    <div class="container">
+        <div id="page1" class="page active">
+            <h2>ข้อมูลส่วนตัว</h2>
+            <form id="personalInfoForm">
+                <label for="name">ชื่อ-สกุล:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="age">อายุ:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="address">บ้านเลขที่:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="village">หมู่ที่:</label>
+                <input type="text" id="village" name="village" required>
+
+                <button type="button" onclick="goToPage(2)">Next</button>
+            </form>
+        </div>
+
+        <div id="page2" class="page">
+            <h2>แบบประเมิน</h2>
+            <form id="assessmentForm">
+                <div class="questions-container">
+                    <div class="question-container">
+                        <div class="question">
+                            <p>1. รับประทานอาหาร (เมื่อเตรียมอาหารไว้ให้เรียบร้อยต่อหน้า)</p>
+                            <label><input type="radio" name="feeding" value="0" required> 0: ไม่สามารถตักอาหารเข้าปากได้ ต้องมีคนป้อนให้</label>
+                            <label><input type="radio" name="feeding" value="1"> 1: ตักอาหารเองได้แต่ต้องมีคนช่วย เช่น ช่วยใช้ช้อนตักเตรียมไว้ให้หรือตัดเป็นเล็กๆ ไว้ล่วงหน้า</label>
+                            <label><input type="radio" name="feeding" value="2"> 2: ตักอาหารและช่วยตัวเองได้เป็นปกติ</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>2. ดูแลสุขอนามัยส่วนตัว (ล้างหน้า หวีผม แปรงฟัน โกนหนวด ในช่วง 24 - 28 ชั่วโมงที่ผ่านมา)</p>
+                            <label><input type="radio" name="grooming" value="0" required> 0: ต้องการความช่วยเหลือ</label>
+                            <label><input type="radio" name="grooming" value="1"> 1: ทำเองได้ (รวมทั้งที่ทำได้เองถ้าเตรียมอุปกรณ์ไว้ให้)</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>3. ย้ายตำแหน่ง (ลุกนั่งจากที่นอน หรือจากเตียงไปยังเก้าอี้)</p>
+                            <label><input type="radio" name="transfer" value="0" required> 0: ไม่สามารถนั่งได้ (นั่งแล้วจะล้มเสมอ) หรือต้องใช้คนสองคนช่วยกันยกขึ้น</label>
+                            <label><input type="radio" name="transfer" value="1"> 1: ต้องการความช่วยเหลืออย่างมากจึงจะนั่งได้ เช่น ต้องใช้คนที่แข็งแรงหรือมีทักษะ 1 คน หรือใช้คนทั่วไป 2 คนพยุงหรือดันขึ้นมาจึงจะนั่งอยู่ได้</label>
+                            <label><input type="radio" name="transfer" value="2"> 2: ต้องการความช่วยเหลือบ้าง เช่น บอกให้ทำตาม หรือช่วยพยุงเล็กน้อย หรือต้องมีคนดูแลเพื่อความปลอดภัย</label>
+                            <label><input type="radio" name="transfer" value="3"> 3: ทำได้เอง</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>4. ใช้ห้องน้ำ</p>
+                            <label><input type="radio" name="toilet" value="0" required> 0: ช่วยตัวเองไม่ได้</label>
+                            <label><input type="radio" name="toilet" value="1"> 1: ทำเองได้บ้าง (อย่างน้อยทำความสะอาดตัวเองได้หลังจากเสร็จธุระ) แต่ต้องการความช่วยเหลือในบางสิ่ง</label>
+                            <label><input type="radio" name="toilet" value="2"> 2: ช่วยตัวเองได้ดี (ขึ้นนั่งและลงจากโถส้วมเองได้ ทำความสะอาดได้เรียบร้อยหลังจากเสร็จธุระ ถอดใส่เสื้อผ้าได้เรียบร้อย)</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>5. เคลื่อนที่ภายในห้องหรือบ้าน</p>
+                            <label><input type="radio" name="mobility" value="0" required> 0: เคลื่อนที่ไปไหนไม่ได้</label>
+                            <label><input type="radio" name="mobility" value="1"> 1: ต้องใช้รถเข็นช่วยตัวเองให้เคลื่อนที่ได้เอง (ไม่ต้องมีคนเข็นให้) และจะต้องเข้าออกมุมห้องหรือประตูได้</label>
+                            <label><input type="radio" name="mobility" value="2"> 2: เดินหรือเคลื่อนที่โดยมีคนช่วย เช่น พยุง หรือบอกให้ทำตาม หรือต้องให้ความสนใจดูแลเพื่อความปลอดภัย</label>
+                            <label><input type="radio" name="mobility" value="3"> 3: เดินหรือเคลื่อนที่ได้เอง</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>6. การสวมใส่เสื้อผ้า</p>
+                            <label><input type="radio" name="dressing" value="0" required> 0: ต้องมีคนสวมใส่ให้ ช่วยตัวเองแทบไม่ได้หรือได้น้อย</label>
+                            <label><input type="radio" name="dressing" value="1"> 1: ช่วยตัวเองได้ประมาณร้อยละ 50 ที่เหลือต้องมีคนช่วย</label>
+                            <label><input type="radio" name="dressing" value="2"> 2: ช่วยตัวเองได้ดี (รวมทั้งการติดกระดุม รูดซิบ หรือใช้เสื้อผ้าที่ดัดแปลงให้เหมาะสมก็ได้)</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>7. การขึ้นลงบันได 1 ชั้น</p>
+                            <label><input type="radio" name="stairs" value="0" required> 0: ไม่สามารถทำได้</label>
+                            <label><input type="radio" name="stairs" value="1"> 1: ต้องการคนช่วย</label>
+                            <label><input type="radio" name="stairs" value="2"> 2: ขึ้นลงได้เอง (ถ้าต้องใช้เครื่องช่วยเดิน เช่น walker จะต้องเอาขึ้นลงได้ด้วย)</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>8. การอาบน้ำ</p>
+                            <label><input type="radio" name="bathing" value="0" required> 0: ต้องมีคนช่วยหรือทำให้</label>
+                            <label><input type="radio" name="bathing" value="1"> 1: อาบน้ำเองได้</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>9. การกลั้นการถ่ายอุจจาระในระยะ 1 สัปดาห์ที่ผ่านมา</p>
+                            <label><input type="radio" name="bowels" value="0" required> 0: กลั้นไม่ได้ หรือต้องการการสวนอุจจาระอยู่เสมอ</label>
+                            <label><input type="radio" name="bowels" value="1"> 1: กลั้นไม่ได้บางครั้ง (เป็นน้อยกว่า 1 ครั้งต่อสัปดาห์)</label>
+                            <label><input type="radio" name="bowels" value="2"> 2: กลั้นได้เป็นปกติ</label>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <p>10. การกลั้นปัสสาวะในระยะ 1 สัปดาห์ที่ผ่านมา</p>
+                            <label><input type="radio" name="bladder" value="0" required> 0: กลั้นไม่ได้ หรือใส่สายสวนปัสสาวะแต่ไม่สามารถดูแลเองได้</label>
+                            <label><input type="radio" name="bladder" value="1"> 1: กลั้นไม่ได้บางครั้ง (เป็นน้อยกว่าวันละ 1 ครั้ง)</label>
+                            <label><input type="radio" name="bladder" value="2"> 2: กลั้นได้เป็นปกติ</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="calculateScore()">Calculate Score</button>
+            </form>
+        </div>
+
+        <div id="page3" class="page">
+            <div class="result-container">
+                <h2>ผลการประเมิน</h2>
+                <div id="scoreResult" class="score-result"></div>
+                <button type="button" onclick="goToPage(4)">Next</button>
+            </div>
+        </div>
+
+        <div id="page4" class="page">
+            <h2>คำถามเพิ่มเติม</h2>
+            <form id="additionalForm">
+                <div class="question">
+                    <p>1. มีผู้ดูแลประจำหรือไม่:</p>
+                    <label><input type="radio" name="caregiver" value="ไม่มี ถูกญาติทอดทิ้ง" required> ไม่มี ถูกญาติทอดทิ้ง</label>
+                    <label><input type="radio" name="caregiver" value="ไม่มี อยู่ตามลำพังไม่มีญาติ"> ไม่มี อยู่ตามลำพังไม่มีญาติ</label>
+                    <label><input type="radio" name="caregiver" value="มี ครอบครัวดูแล"> มี ครอบครัวดูแล</label>
+                    <label><input type="radio" name="caregiver" value="มี เพื่อนบ้านดูแล"> มี เพื่อนบ้านดูแล</label>
+                </div>
+                <div class="question">
+                    <p>2. ได้รับเงินสงเคราะห์หรือไม่:</p>
+                    <label><input type="radio" name="financialSupport" value="ไม่ได้รับ" required> ไม่ได้รับ</label>
+                    <label><input type="radio" name="financialSupport" value="ได้รับ"> ได้รับ</label>
+                    <label><input type="radio" name="financialSupport" value="ไม่ทราบ"> ไม่ทราบ</label>
+                </div>
+                <div class="question">
+                    <p>3. เป็นสมาชิกชมรมใดๆ หรือไม่:</p>
+                    <label><input type="radio" name="clubMembership" value="ไม่ได้เป็น" required> ไม่ได้เป็น</label>
+                    <label><input type="radio" name="clubMembership" value="ชมรมผู้สูงอายุ"> ชมรมผู้สูงอายุ</label>
+                    <label><input type="radio" name="clubMembership" value="คลังปัญญา"> คลังปัญญา</label>
+                    <label><input type="radio" name="clubMembership" value="ชมรมผู้สูงอายุและคลังปัญญา"> ชมรมผู้สูงอายุและคลังปัญญา</label>
+                    <label><input type="radio" name="clubMembership" value="อื่นๆ"> อื่นๆ</label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
