@@ -89,25 +89,3 @@ function sendToGoogleSheets(data) {
         console.error('Error:', error);
     });
 }
-
-function submitForm() {
-    gapi.client.init({
-      apiKey: 'AIzaSyDoneBpMR12Qlji9KcAw8BZpjjp6juuv2s'
-    }).then(function() {
-      return gapi.client.load('sheets', 'v4');
-    }).then(function() {
-      var params = {
-        spreadsheetId: '181SVrsv-f4aYSMg8r2VmAroKAFsdCiTKVTM20mx4Em4',
-        range: 'Sheet1!A1:Z999',
-        valueInputOption: 'USER_ENTERED',
-        resource: {
-          values: [[document.getElementById('name').value, document.getElementById('email').value]]
-        }
-      };
-      return gapi.client.sheets.spreadsheets.values.append(params);
-    }).then(function(response) {
-      console.log(response.result);
-    }, function(response) {
-      console.error(response.result.error.message);
-    });
-}
