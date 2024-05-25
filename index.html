@@ -157,9 +157,33 @@
         </div>
     </div>
 
-    <script src="scripts.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <script>
-        const API_URL = 'https://script.google.com/macros/library/d/1QJSbrHiox5CmsStO-2zur95ZzIuGptzIv2Kesd4LzET6W5_xZkDPC79s/1'; // Replace with your Google Apps Script Web App URL
-    </script>
+      function submitForm() {
+        gapi.client.init({
+          apiKey: 'YOUR_API_KEY'
+        }).then(function() {
+          return gapi.client.load('sheets', 'v4');
+        }).then(function() {
+          var params = {
+            spreadsheetId: 'YOUR_SPREADSHEET_ID',
+            range: 'Sheet1!A1:Z9999',
+            valueInputOption: '181SVrsv-f4aYSMg8r2VmAroKAFsdCiTKVTM20mx4Em4',
+            resource: {
+              values: [[document.getElementById('name').value, document.getElementById('email').value]]
+            }
+          };
+          return gapi.client.sheets.spreadsheets.values.append(params);
+        }).then(function(response) {
+          console.log(response.result);
+        }, function(response) {
+          console.error(response.result.error.message);
+        });
+      }
+      document.getElementById('my-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    submitForm();
+  });
+</script>
 </body>
 </html>
