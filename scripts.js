@@ -74,7 +74,7 @@ document.getElementById('additionalForm').addEventListener('submit', (event) => 
 });
 
 function sendToGoogleSheets(data) {
-    fetch(API_URL, {
+    fetch('https://script.google.com/macros/s/AKfycbw4dRDg3PHJgMnJocxuFjTLCsp-Y9ZUYrXEq0d3-yHXTQR_pRogOMN1_sxRsNw32SlT8Q/exec', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
